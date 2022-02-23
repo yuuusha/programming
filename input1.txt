@@ -1,0 +1,5 @@
+Fruitella marmalade strawberry 65 4
+Montpensier lollipop mint 45 5
+Haribo marmalade apple 55 5
+Alenka chocolate nuts 50 1
+Milka chocolate strawberry 60 1
