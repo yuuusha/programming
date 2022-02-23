@@ -42,10 +42,10 @@ void heapify(int arr[], int n, int root) {
     int l = 2 * root + 1; 
     int r = 2 * root + 2;
 
-    if (l < n && arr[l] > arr[largest])
+    if (l < n && arr[l] < arr[largest])
         largest = l;
 
-    if (r < n && arr[r] > arr[largest])
+    if (r < n && arr[r] < arr[largest])
         largest = r;
 
     if (largest != root) {
@@ -73,6 +73,9 @@ int main() {
     cin >> n;
     int** mass = create(n, n);
     read(mass, n, n);
+    cout << endl;
+    print(mass, n, n);
+    cout << endl;
 
     for (int z = 1; z < n - 1; z++) {
 
@@ -116,17 +119,17 @@ int main() {
 
 5
 25 24 23 22 21
-20 19 18 17 16
-15 14 13 12 11
-10 9 8 7 6
-5 4 3 2 1
+2 19 18 17 16
+3 8 13 12 11
+4 9 14 7 6
+5 10 15 20 1
 
 вывод
 
 25      6       11      16      21
-2       19      12      17      22
-3       8       13      18      23
-4       9       14      7       24
-5       10      15      20      1
+20      19      12      17      22
+15      14      13      18      23
+10      9       8       7       24
+5       4       3       2       1
 
 */
