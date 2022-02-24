@@ -1,27 +1,26 @@
 #include <iostream>
+#include <algorithm>
 #include "arrays.h"
 
 using namespace std;
 
-void quickSort(int* array, int low, int high) {
+void quickSort(int* mass, int low, int high) {
 
     int i = low;
     int j = high-1;
-    int pivot = array[(i + j) / 2];
+    int avrg = mass[(i + j) / 2];
     int temp;
 
     while (i <= j) {
 
-        while (array[i] < pivot)
+        while (mass[i] < avrg)
             i++;
 
-        while (array[j] > pivot)
+        while (mass[j] > avrg)
             j--;
 
         if (i <= j) {
-            temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+            swap(mass[i],mass[j]);
             i++;
             j--;
         }
@@ -29,40 +28,40 @@ void quickSort(int* array, int low, int high) {
     }
 
     if (j > low)
-        quickSort(array, low, j);
+        quickSort(mass, low, j);
 
     if (i < high)
-        quickSort(array, i, high);
+        quickSort(mass, i, high);
 
 }
 
-void heapify(int arr[], int n, int root) {
+void heapify(int *mass, int n, int root) {
 
     int largest = root; 
     int l = 2 * root + 1; 
     int r = 2 * root + 2;
 
-    if (l < n && arr[l] < arr[largest])
+    if (l < n && mass[l] < mass[largest])
         largest = l;
 
-    if (r < n && arr[r] < arr[largest])
+    if (r < n && mass[r] < mass[largest])
         largest = r;
 
     if (largest != root) {
-        swap(arr[root], arr[largest]);
-        heapify(arr, n, largest);
+        swap(mass[root], mass[largest]);
+        heapify(mass, n, largest);
     }
 
 }
 
-void heapSort(int arr[], int n) {
+void heapSort(int *mass, int n) {
 
     for (int i = n / 2 - 1; i >= 0; i--)
-        heapify(arr, n, i);
+        heapify(mass, n, i);
 
     for (int i = n - 1; i >= 0; i--) {
-        swap(arr[0], arr[i]);
-        heapify(arr, i, 0);
+        swap(mass[0], mass[i]);
+        heapify(mass, i, 0);
     }
 
 }
