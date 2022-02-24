@@ -19,35 +19,40 @@ int main() {
 	ifstream in("input1.txt");
 
 	int n, i = 0;
-	vector <candy> bag1(10);
+	list <candy> bag2;
+	list<candy>::iterator it;
 
 	while (!in.eof()) {
-		in >> bag1[i].name >> bag1[i].type >> bag1[i].comp >> bag1[i].mass >> bag1[i].count;
+		candy temp;
+		in >> temp.name >> temp.type >> temp.comp >> temp.mass >> temp.count;
+		bag2.push_back(temp);
 		i++;
 	}
 
-	for (int i = 0; i < 5; i++) {
-		cout << bag1[i].name << ' ' << bag1[i].type << ' ' << bag1[i].comp << ' ' << bag1[i].mass << ' ' << bag1[i].count;
+	for (it = bag2.begin(); it != bag2.end(); it++) {
+		cout << (*it).name << ' ' << (*it).type << ' ' << (*it).comp << ' ' << (*it).mass << ' ' << (*it).count;
 		cout << endl;
 	}
 	cout << endl;
 
 
-
+	it = bag2.begin();
 	for (int i = 0; i < 3; i++) {
-		cin >> bag1[i].name >> bag1[i].type >> bag1[i].comp >> bag1[i].mass >> bag1[i].count;
+		cin >> (*it).name >> (*it).type >> (*it).comp >> (*it).mass >> (*it).count;
+		it++;
 	}
-	for (int i = 0; i < 5; i++) {
-		if (bag1[i].type == "chocolate")
-			bag1[i].count *= 2;
+
+	for (it = bag2.begin(); it != bag2.end(); it++) {
+		if ((*it).type == "chocolate")
+			(*it).count *= 2;
 	}
+
 	cout << endl;
-
-
-	for (int i = 0; i < 5; i++) {
-		cout << bag1[i].name << ' ' << bag1[i].type << ' ' << bag1[i].comp << ' ' << bag1[i].mass << ' ' << bag1[i].count;
+	for (it = bag2.begin(); it != bag2.end(); it++) {
+		cout << (*it).name << ' ' << (*it).type << ' ' << (*it).comp << ' ' << (*it).mass << ' ' << (*it).count;
 		cout << endl;
 	}
+	cout << endl;
 
 }
 
