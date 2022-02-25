@@ -19,40 +19,34 @@ int main() {
 	ifstream in("input1.txt");
 
 	int n, i = 0;
-	list <candy> bag2;
-	list<candy>::iterator it;
+	vector <candy> bag1(5);
+	vector<candy>::iterator it;
 
 	while (!in.eof()) {
-		candy temp;
-		in >> temp.name >> temp.type >> temp.comp >> temp.mass >> temp.count;
-		bag2.push_back(temp);
+		in >> bag1[i].name >> bag1[i].type >> bag1[i].comp >> bag1[i].mass >> bag1[i].count;
 		i++;
 	}
 
-	for (it = bag2.begin(); it != bag2.end(); it++) {
-		cout << (*it).name << ' ' << (*it).type << ' ' << (*it).comp << ' ' << (*it).mass << ' ' << (*it).count;
+	for (int i = 0; i < 5; i++) {
+		cout << bag1[i].name << ' ' << bag1[i].type << ' ' << bag1[i].comp << ' ' << bag1[i].mass << ' ' << bag1[i].count;
 		cout << endl;
 	}
 	cout << endl;
 
-
-
 	for (int i = 0; i < 3; i++) {
-		bag2.pop_front();
+		bag1.erase(bag1.begin());
 		candy temp;
 		cin >> temp.name >> temp.type >> temp.comp >> temp.mass >> temp.count;
-		bag2.push_back(temp);
+		bag1.push_back(temp);
 	}
 
-	it = --bag2.end();
+	it = --bag1.end();
 	cin >> n;
 	(*it).count = n;
+
 	cout << endl;
-
-
-
-	for (it = bag2.begin(); it != bag2.end(); it++) {
-		cout << (*it).name << ' ' << (*it).type << ' ' << (*it).comp << ' ' << (*it).mass << ' ' << (*it).count;
+	for (int i = 0; i < bag1.size(); i++) {
+		cout << bag1[i].name << ' ' << bag1[i].type << ' ' << bag1[i].comp << ' ' << bag1[i].mass << ' ' << bag1[i].count;
 		cout << endl;
 	}
 
@@ -71,7 +65,7 @@ Milka chocolate strawberry 60 1
 Marshmallow marmalade apple 55 5
 M&Ms chocolate nuts 50 2
 Licorice lollipop mint 45 5
-12
+10
 
 вывод
 
@@ -79,6 +73,6 @@ Alenka chocolate nuts 50 1
 Milka chocolate strawberry 60 1
 Marshmallow marmalade apple 55 5
 M&Ms chocolate nuts 50 2
-Licorice lollipop mint 45 12
+Licorice lollipop mint 45 10
 
 */
