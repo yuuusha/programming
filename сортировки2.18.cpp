@@ -37,19 +37,19 @@ void quickSort(int* mass, int low, int high) {
 
 void heapify(int *mass, int n, int root) {
 
-    int largest = root; 
+    int lowest = root; 
     int l = 2 * root + 1; 
     int r = 2 * root + 2;
 
-    if (l < n && mass[l] < mass[largest])
-        largest = l;
+    if (l < n && mass[l] < mass[lowest])
+        lowest = l;
 
-    if (r < n && mass[r] < mass[largest])
-        largest = r;
+    if (r < n && mass[r] < mass[lowest])
+        lowest = r;
 
-    if (largest != root) {
-        swap(mass[root], mass[largest]);
-        heapify(mass, n, largest);
+    if (lowest != root) {
+        swap(mass[root], mass[lowest]);
+        heapify(mass, n, lowest);
     }
 
 }
