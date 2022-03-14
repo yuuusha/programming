@@ -21,7 +21,7 @@ public:
     triangle(double a, double b, double c) { set(a, b, c); };
 
     bool set(double a, double b, double c) {
-        if (a > 0 && b > 0 && c > 0) {
+        if ((a > 0 && b > 0 && c > 0) && (min(min(a, b), min(b, c)) + max(min(a, b), min(max(a, b), c)) > max(max(a, b), max(b, c)))) {
             if (straight(a, b, c)) n++;
             if (straight(this->a, this->b, this->c)) n--;
             this->a = a;
