@@ -301,6 +301,7 @@ int main() {
 		cout << "12) найти песни, названия которых состоят из одного слова" << endl;
 		cout << "13) изменить страну исполнителя" << endl;
 		cout << "14) группа распалась" << endl;
+        cout << "15) выход" << endl;
 
 		std::cin >> n;
 
@@ -410,7 +411,10 @@ int main() {
 			getline(cin, name);
 			getline(cin, newartist);
 			player.if_break(name, newartist);
-		}
+		    }
+        case 15: {
+            return 0;
+            }
 		}
 
 		system("cls");
