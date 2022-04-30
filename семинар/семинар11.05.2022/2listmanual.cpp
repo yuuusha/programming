@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <random>
 #include <ctime>
+#include <list>
 
 using namespace std;
 
@@ -21,9 +22,9 @@ bool* eratos(int n) {
 	return a;
 }
 
-void print(vector<int> a) {
-	for (int i = 0; i < a.size(); i++)
-		cout << a[i] << ' ';
+void print(list<int> a) {
+	for (auto x : a)
+		cout << x << ' ';
 	cout << endl;
 }
 
@@ -36,7 +37,7 @@ void print(bool* a, int n) {
 int main() {
 
 	srand(time(NULL));
-	vector<int> num;
+	list<int> num;
 
 	for (int i = 0; i < 20; i++) {
 		int n = rand() % 100;
@@ -47,10 +48,10 @@ int main() {
 	int mx = *max_element(num.begin(), num.end());
 	bool* a = eratos(mx);
 
-	int k = 0;
-	for (int i = 0; i < num.size(); i++) {
-		if (a[num[i]]) {
-			swap(num[i], num[k]);
+	auto k = num.begin();
+	for (auto x = num.begin(); x != num.end(); x++) {
+		if (a[*x]) {
+			swap(*x, *k);
 			k++;
 		}
 	}

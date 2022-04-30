@@ -8,17 +8,27 @@
 
 using namespace std;
 
-void eratosp(vector<int>& a) {
-	int n = a.size();
+bool* eratos(int n) {
+	n++;
+	bool* a = new bool(n);
+	a[0] = false;
+	a[1] = false;
 	for (int i = 2; i < n; i++)
-		a[i] = i;
+		a[i] = true;
 	for (int i = 2; i * i < n; i++)
 		for (int p = i * i; p < n; p += i)
-			a[p] = 0;
+			a[p] = false;
+	return a;
 }
 
 void print(vector<int> a) {
 	for (int i = 0; i < a.size(); i++)
+		cout << a[i] << ' ';
+	cout << endl;
+}
+
+void print(bool* a, int n) {
+	for (int i = 0; i < n; i++)
 		cout << a[i] << ' ';
 	cout << endl;
 }
@@ -35,15 +45,14 @@ int main() {
 	print(num);
 
 	int mx = *max_element(num.begin(), num.end());
-	vector<int> era(mx + 1);
-	eratosp(era);
+	bool* a = eratos(mx);
 
 	vector<int> newnum(num.size());
-	auto it = copy_if(num.begin(), num.end(), newnum.begin(), [era](const int& a) {
-		return find(era.begin(), era.end(), a) != era.end() && a!=0;
+	auto it = copy_if(num.begin(), num.end(), newnum.begin(), [a](const int& b) {
+		return a[b];
 		});
-	auto it1 = copy_if(num.begin(), num.end(), it, [era](const int& a) {
-		return find(era.begin(), era.end(), a) == era.end() || a==0;
+	copy_if(num.begin(), num.end(), it, [a](const int& b) {
+		return !a[b];
 		});
 	print(newnum);
 
