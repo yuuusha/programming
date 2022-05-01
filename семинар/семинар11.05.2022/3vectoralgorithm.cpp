@@ -28,13 +28,11 @@ int main() {
 	int k;
 	cin >> k;
 	auto it = num.begin();
-	for (int i = 1; i < k; i++) {
+	for (int i = 1; i < k; i++) 
 		it++;
-	}
 	
-	vector<int> newnum(num.size());
-	auto it1 = copy(it, num.end(), newnum.begin());
-	copy(num.begin(), it, it1);
-	print(newnum);
+
+	rotate(num.begin(), it, num.end());
+	print(num);
 
 }

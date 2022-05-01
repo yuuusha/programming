@@ -9,16 +9,16 @@
 
 using namespace std;
 
-void print(list<int> a) {
-	for (auto x : a)
-		cout << x << ' ';
+void print(vector<int> a) {
+	for (int i = 0; i < a.size(); i++)
+		cout << a[i] << ' ';
 	cout << endl;
 }
 
 int main() {
 
 	srand(time(NULL));
-	list<int> num;
+	vector<int> num;
 
 	for (int i = 0; i < 20; i++) {
 		int n = rand() % 100;
@@ -28,12 +28,13 @@ int main() {
 
 	int k;
 	cin >> k;
-	auto it = num.begin();
-	for (int i = 1; i < k; i++) 
-		it++;
-	
 
-	rotate(num.begin(), it, num.end());
+	auto it = num.begin();
+	for (int i = 1; i < k; i++) {
+		num.push_back(*it);
+		it++;
+	}
+	num.erase(num.begin(), it);
 	print(num);
 
 }

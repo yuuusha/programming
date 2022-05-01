@@ -28,12 +28,13 @@ int main() {
 
 	int k;
 	cin >> k;
-	auto it = num.begin();
-	for (int i = 1; i < k; i++) 
-		it++;
-	
 
-	rotate(num.begin(), it, num.end());
+	auto it = num.begin();
+	for (int i = 1; i < k; i++) {
+		num.push_back(*it);
+		it++;
+	}
+	num.erase(num.begin(), it);
 	print(num);
 
 }
