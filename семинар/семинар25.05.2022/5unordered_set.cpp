@@ -33,7 +33,9 @@ int main() {
 
 	string text = "blue red GREEN YelLoW PINK ";
 	unordered_set<string> words;
-	unordered_set<char> ans;
+
+	unordered_set<char> extra, extra1;
+	vector<char> ans;
 
 	int i = 0;
 	int cur = text.find(' ', i);
@@ -48,9 +50,16 @@ int main() {
 
 	print(words);
 
-	for (auto it = words.begin(); (it != words.end()); it++)
+
+	for (auto it = words.begin(); it != words.end(); it++) {
 		if (*it == tocaps(*it))
-			trans(ans, *it);
-	print(ans);
+			trans(extra, *it);
+		else
+			trans(extra1, tocaps(*it));
+	}
 	
+	for (auto i : extra1) 
+		extra.erase(i);
+	
+	print(extra);
 }

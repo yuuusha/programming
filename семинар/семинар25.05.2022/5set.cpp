@@ -32,7 +32,9 @@ int main() {
 
 	string text = "blue red GREEN YelLoW PINK ";
 	set<string> words;
-	set<char> ans;
+
+	set<char> extra, extra1;
+	vector<char> ans;
 
 	int i = 0;
 	int cur = text.find(' ', i);
@@ -47,9 +49,14 @@ int main() {
 
 	print(words);
 
-	auto it = words.begin();
-	while ( (*it == tocaps(*it)) && (it != words.end())) 
-		trans(ans, *it++);
+
+	for (auto it = words.begin(); it != words.end(); it++) {
+		if (*it == tocaps(*it))
+			trans(extra, *it);
+		else
+			trans(extra1, tocaps(*it));
+	}
+
+	set_difference(extra.begin(), extra.end(), extra1.begin(), extra1.end(), back_inserter(ans));
 	print(ans);
-	
 }
